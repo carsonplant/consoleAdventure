@@ -5,8 +5,7 @@ namespace ConsoleAdventure.Project.Models
 {
   public class Room : IRoom
   {
-
-    public List<Direction> Directions { get; set; }
+    public string Direction { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
     public List<Item> Items { get; set; }
@@ -14,7 +13,7 @@ namespace ConsoleAdventure.Project.Models
 
     public void AddExit(IRoom room)
     {
-      Exits.Add(room.Directions, room);
+      Exits.Add(room.Direction, room);
     }
     public IRoom Go(string direction)
     {
@@ -29,9 +28,10 @@ namespace ConsoleAdventure.Project.Models
     {
       throw new System.NotImplementedException();
     }
-    public Room(List<Direction> directions, string name, string description, List<Item> items, Dictionary<string, IRoom> exits)
+
+    public Room(string direction, string name, string description, List<Item> items, Dictionary<string, IRoom> exits)
     {
-      Directions = directions;
+      Direction = direction;
       Name = name;
       Description = description;
       Items = items;

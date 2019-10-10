@@ -5,7 +5,7 @@ namespace ConsoleAdventure.Project.Interfaces
 {
   public interface IRoom
   {
-    List<Direction> Directions { get; set; }
+    string Direction { get; set; }
     string Name { get; set; }
     string Description { get; set; }
     List<Item> Items { get; set; }

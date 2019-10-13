@@ -23,6 +23,8 @@ namespace ConsoleAdventure.Project
     {
       string from = _game.CurrentRoom.Name;
       _game.CurrentRoom = _game.CurrentRoom.Go(direction);
+      string to = _game.CurrentRoom.Name;
+      Messages.Add($"Traveled from {from} to {to}");
     }
     public void Help()
     {

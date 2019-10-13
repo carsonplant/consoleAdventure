@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ConsoleAdventure.Project.Interfaces;
 
@@ -26,7 +27,12 @@ namespace ConsoleAdventure.Project.Models
 
     public string GetTemplate()
     {
-      throw new System.NotImplementedException();
+      string template = $"Room: {Name} \nExits:\n";
+      foreach (var exit in Exits)
+      {
+        template += "\t" + exit.Key + " - " + exit.Value.Name + Environment.NewLine;
+      }
+      return template;
     }
 
     public Room(string name, string description)

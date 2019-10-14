@@ -40,16 +40,6 @@ namespace ConsoleAdventure.Project.Models
       CurrentRoom = one;
     }
 
-    public IRoom GetUserInput()
-    {
-      throw new System.NotImplementedException();
-    }
-
-    void IGame.GetUserInput()
-    {
-      throw new System.NotImplementedException();
-    }
-
     public Game()
     {
       CurrentPlayer = new Player();

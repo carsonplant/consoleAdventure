@@ -12,15 +12,23 @@ namespace ConsoleAdventure.Project.Models
     public List<IItem> Items { get; set; }
     public Dictionary<Direction, IRoom> Exits { get; set; }
 
+    private Dictionary<IItem, KeyValuePair<Direction, IRoom>> lockedRooms { get; set; }
+
     public void AddItem(Item item)
     {
       Items.Add(item);
     }
-
+    //FIXME this will need to be setup in your game setup
     public void AddExit(Direction direction, IRoom room)
     {
       Exits.Add(direction, room);
     }
+
+    public void AddLockedExit(Direction direction, IRoom room, IItem unlocksWith)
+    {
+      lockedRooms.Add(unlocksWith, new KeyValuePair<Direction, IRoom>(direction, room));
+    }
+
     public IRoom Go(Direction direction)
     {
       if (Exits.ContainsKey(direction))
@@ -55,6 +63,13 @@ namespace ConsoleAdventure.Project.Models
         Console.WriteLine("There is nothing else in this room.");
       }
     }
+    //FIXME  Finish writing this out
+    public void Use(IItem item)
+    {
+      //if lockedExits contains the item as a key
+      // exits.add(lockedExits[item])
+      //lockedExits.remove(item)
+    }
 
     public Room(string name, string description)
     {
@@ -62,6 +77,7 @@ namespace ConsoleAdventure.Project.Models
       Description = description;
       Items = new List<IItem>();
       Exits = new Dictionary<Direction, IRoom>();
+      lockedRooms = new Dictionary<IItem, KeyValuePair<Direction, IRoom>>();
     }
 
   }

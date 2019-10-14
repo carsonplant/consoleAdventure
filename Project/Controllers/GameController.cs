@@ -14,6 +14,9 @@ namespace ConsoleAdventure.Project.Controllers
     //NOTE Makes sure everything is called to finish Setup and Starts the Game loop
     public void Run()
     {
+      Console.WriteLine("Welcome to the labyrinth...");
+      Console.WriteLine(Environment.NewLine);
+      Console.WriteLine("Continue your exploration in search of the mummy's tomb");
       while (true)
       {
         Update();

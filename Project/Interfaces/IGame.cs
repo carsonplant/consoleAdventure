@@ -7,7 +7,6 @@ namespace ConsoleAdventure.Project.Interfaces
     IRoom CurrentRoom { get; set; }
     IPlayer CurrentPlayer { get; set; }
 
-    void GetUserInput();
     void Setup();
   }
 }

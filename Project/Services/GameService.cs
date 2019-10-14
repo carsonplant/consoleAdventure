@@ -10,7 +10,7 @@ namespace ConsoleAdventure.Project
   public class GameService : IGameService
   {
     private IGame _game { get; set; }
-
+    //FIXME Remove all console writes and do Message.add
     public List<string> Messages { get; set; }
     public GameService()
     {
@@ -21,12 +21,6 @@ namespace ConsoleAdventure.Project
     public void StartGame()
     {
       _game.Setup();
-      Console.Clear();
-      Console.WriteLine("Welcome to the labyrinth...");
-      Console.WriteLine(Environment.NewLine);
-      Console.WriteLine("Continue your exploration in search of the mummy's tomb");
-      Console.ReadLine();
-      Thread.Sleep(3000);
 
       {
         Console.Clear();
@@ -36,7 +30,6 @@ namespace ConsoleAdventure.Project
         Console.WriteLine($"{_game.CurrentRoom.Description}");
         Console.WriteLine(Environment.NewLine);
         Console.WriteLine("What's next?");
-        _game.GetUserInput();
 
 
       }
@@ -72,8 +65,7 @@ namespace ConsoleAdventure.Project
     }
     public void Help()
     {
-      Console.Clear();
-      Console.WriteLine(@"
+      Messages.Add(@"
       Go + Direction(east, west, north or south)
       Take + {item name} i.e. take torch
       Use + {itemname}
@@ -91,7 +83,6 @@ namespace ConsoleAdventure.Project
       Console.WriteLine(Environment.NewLine);
       _game.CurrentPlayer.ShowInventory();
       Console.WriteLine(Environment.NewLine);
-      _game.GetUserInput();
     }
 
     public void Look()
@@ -102,7 +93,6 @@ namespace ConsoleAdventure.Project
       _game.CurrentRoom.PrintRoomItems();
       Console.WriteLine(Environment.NewLine);
       Console.WriteLine("What is your next move Investigator?");
-      _game.GetUserInput();
     }
 
     public void Quit()
@@ -126,26 +116,22 @@ namespace ConsoleAdventure.Project
     ///<summary>When taking an item be sure the item is in the current room before adding it to the player inventory, Also don't forget to remove the item from the room it was picked up in</summary>
     public void TakeItem(string itemName)
     {
-      // Item item = SecureItem(itemName, _game.CurrentRoom.Items);
-      // if (item != null)
-      // {
-      //   Console.Clear();
-      //   _game.CurrentRoom.Items.Remove(item);
-      //   _game.CurrentPlayer.AddItem(item);
-      //   Console.WriteLine($"You picked up {itemName}");
-      //   Thread.Sleep(1750);
-      // }
-      // else
-      // {
-      //   Console.Clear();
-      //   Console.WriteLine(_game.CurrentRoom.Items.Count > 0 ? $"What are you playing at {itemName} isn't there anymore" : "There isn't anything to take.");
-      //   Thread.Sleep(1750);
-      // }
+      IItem item = _game.CurrentRoom.Items.Find(i => { return i.Name.ToLower() == itemName; });
+      if (item != null)
+      {
+        _game.CurrentRoom.Items.Remove(item);
+        _game.CurrentPlayer.Inventory.Add(item);
+        Messages.Add($"You picked up {itemName}");
+      }
+      else
+      {
+        Messages.Add(_game.CurrentRoom.Items.Count > 0 ? $"What are you playing at {itemName} isn't there anymore" : "There isn't anything to take.");
+      }
     }
 
     // private Item SecureItem(string input, List<Item> items)
     // {
-    //   return items.Find(i => { return i.Name.ToLower() == input; });
+    //   return ;
     // }
 
 
@@ -154,9 +140,12 @@ namespace ConsoleAdventure.Project
     ///Make sure you validate the item is in the room or player inventory before
     ///being able to use the item
     ///</summary>
+    //FIXME Finish writing this one
     public void UseItem(string itemName)
     {
-      throw new System.NotImplementedException();
+      //find item from player inventory (see find in takeItem)
+      //if they have an item by that name
+      // _game.CurrentRoom.Use(item)
     }
   }
 }

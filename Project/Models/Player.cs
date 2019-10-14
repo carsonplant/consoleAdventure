@@ -7,7 +7,7 @@ namespace ConsoleAdventure.Project.Models
   public class Player : IPlayer
   {
     public string Name { get; set; }
-    public List<Item> Inventory { get; set; }
+    public List<IItem> Inventory { get; set; }
 
     public string GetTemplate()
     {
@@ -15,10 +15,10 @@ namespace ConsoleAdventure.Project.Models
     }
 
 
-    public Player(string name, List<Item> inventory)
+    public Player(string name)
     {
       Name = name;
-      Inventory = inventory;
+      Inventory = new List<IItem>();
     }
 
     public void AddItem(Item item)

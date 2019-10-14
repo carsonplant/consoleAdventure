@@ -31,6 +31,6 @@ namespace ConsoleAdventure.Project.Interfaces
     }
 
     string GetTemplate();
-
+    void Use(IItem itemName);
   }
 }

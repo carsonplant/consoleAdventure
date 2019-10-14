@@ -9,9 +9,9 @@ namespace ConsoleAdventure.Project.Interfaces
     string Name { get; set; }
     string Description { get; set; }
     List<IItem> Items { get; set; }
-    Dictionary<string, IRoom> Exits { get; }
+    Dictionary<Direction, IRoom> Exits { get; }
 
-    IRoom Go(string direction);
+    IRoom Go(Direction direction);
 
     string GetTemplate();
 

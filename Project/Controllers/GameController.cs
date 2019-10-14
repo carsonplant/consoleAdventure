@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using ConsoleAdventure.Project.Interfaces;
 using ConsoleAdventure.Project.Models;
 
@@ -42,7 +43,7 @@ namespace ConsoleAdventure.Project.Controllers
       string option = input.Substring(input.IndexOf(" ") + 1).Trim();
       //NOTE this will take the user input and parse it into a command and option.
       //IE: take silver key => command = "take" option = "silver key"
-      switch (input)
+      switch (command)
       {
         case "q":
         case "quit":
@@ -50,11 +51,78 @@ namespace ConsoleAdventure.Project.Controllers
         case "close":
           Environment.Exit(0);
           break;
-        default:
+        case "go":
           _gameService.Go(input);
+          break;
+        case "take":
+          _gameService.TakeItem(option);
+          break;
+        case "use":
+          _gameService.UseItem(option);
+          break;
+        case "inventory":
+          _gameService.Inventory();
+          break;
+        case "look":
+          _gameService.Look();
+          break;
+        case "help":
+          _gameService.Help();
+          break;
+        case "reset":
+        case "r":
+          _gameService.Reset();
+          break;
+        default:
+          Console.Clear();
+          System.Console.WriteLine("I don't know what you mean, try again.");
           break;
       }
     }
+    // {
+    //   string input = Console.ReadLine().ToLower();
+    //   string[] inputs = input.Split(' ');
+    //   string command = inputs[0];
+    //   string option = "";
+    //   if (inputs.Length > 1)
+    //   {
+    //     option = inputs[1];
+    //   }
+    //   switch (command)
+    //   {
+    //     case "go":
+    //       _gameService.Go(option);
+    //       break;
+    //     case "take":
+    //       TakeItem(option);
+    //       break;
+    //     case "use":
+    //       UseItem(option);
+    //       break;
+    //     case "inventory":
+    //       Inventory();
+    //       break;
+    //     case "look":
+    //       Look();
+    //       break;
+    //     case "help":
+    //       Help();
+    //       break;
+    //     case "quit":
+    //     case "q":
+    //       Quit();
+    //       break;
+    //     case "reset":
+    //     case "r":
+    //       Reset();
+    //       break;
+    //     default:
+    //       Console.Clear();
+    //       System.Console.WriteLine("I'm a computer and I can guess what you are typing, but how bout you try again.");
+    //       Thread.Sleep(1500);
+    //       break;
+    //   }
+    // }
 
     //NOTE this should print your messages for the game.
     private void Print()

@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.Threading;
+using ConsoleAdventure.Project.Controllers;
 using ConsoleAdventure.Project.Interfaces;
 using ConsoleAdventure.Project.Models;
 
@@ -21,19 +24,54 @@ namespace ConsoleAdventure.Project
     }
     public void Go(string direction)
     {
-      string from = _game.CurrentRoom.Name;
-      _game.CurrentRoom = _game.CurrentRoom.Go(direction);
-      string to = _game.CurrentRoom.Name;
-      Messages.Add($"Traveled from {from} to {to}");
+      switch (direction)
+      {
+        case "east":
+          _game.CurrentRoom = (Room)_game.CurrentRoom.Go(Direction.east);
+          break;
+        case "west":
+          _game.CurrentRoom = (Room)_game.CurrentRoom.Go(Direction.west);
+          break;
+        case "north":
+          _game.CurrentRoom = (Room)_game.CurrentRoom.Go(Direction.north);
+          break;
+        case "south":
+          _game.CurrentRoom = (Room)_game.CurrentRoom.Go(Direction.south);
+          break;
+
+        default:
+          Console.Clear();
+          Console.WriteLine("Please choose from you valid directions: 'Forward', 'Right', 'Left', 'Back' ");
+          Thread.Sleep(3000);
+          break;
+      }
+      // string from = _game.CurrentRoom.Name;
+      // _game.CurrentRoom = _game.CurrentRoom.Go(direction);
+      // string to = _game.CurrentRoom.Name;
+      // Messages.Add($"Traveled from {from} to {to}");
     }
     public void Help()
     {
-      throw new System.NotImplementedException();
+      Console.Clear();
+      Console.WriteLine(@"
+      Go + Direction(east, west, north or south)
+      Take + {item name} i.e. take torch
+      Use + {itemname}
+      Look -Looks around the room for items
+      Inventory - View your items
+      Quit - Leave game
+      Reset - Resets game to the start
+      ");
     }
 
     public void Inventory()
     {
-      throw new System.NotImplementedException();
+      Console.Clear();
+      Console.WriteLine($"{_game.CurrentRoom.Description}");
+      Console.WriteLine(Environment.NewLine);
+      _game.CurrentPlayer.ShowInventory();
+      Console.WriteLine(Environment.NewLine);
+      _game.GetUserInput();
     }
 
     public void Look()

@@ -10,13 +10,18 @@ namespace ConsoleAdventure.Project.Models
     public string Name { get; set; }
     public string Description { get; set; }
     public List<IItem> Items { get; set; }
-    public Dictionary<string, IRoom> Exits { get; set; }
+    public Dictionary<Direction, IRoom> Exits { get; set; }
 
-    public void AddExit(string direction, IRoom room)
+    public void AddItem(Item item)
     {
-      Exits.Add(room.Direction, room);
+      Items.Add(item);
     }
-    public IRoom Go(string direction)
+
+    public void AddExit(Direction direction, IRoom room)
+    {
+      Exits.Add(direction, room);
+    }
+    public IRoom Go(Direction direction)
     {
       if (Exits.ContainsKey(direction))
       {
@@ -35,13 +40,36 @@ namespace ConsoleAdventure.Project.Models
       return template;
     }
 
+    public void PrintRoomItems()
+    {
+      if (Items.Count > 0)
+      {
+        Console.WriteLine("You notice this in the room:");
+        Items.ForEach(item =>
+        {
+          Console.WriteLine($"{item.Name}: {item.Description}");
+        });
+      }
+      else
+      {
+        Console.WriteLine("There is nothing else in this room.");
+      }
+    }
+
     public Room(string name, string description)
     {
       Name = name;
       Description = description;
       Items = new List<IItem>();
-      Exits = new Dictionary<string, IRoom>();
+      Exits = new Dictionary<Direction, IRoom>();
     }
 
+  }
+  public enum Direction
+  {
+    east,
+    west,
+    north,
+    south
   }
 }

@@ -19,27 +19,36 @@ namespace ConsoleAdventure.Project.Models
       Room seven = new Room("seven", "Locked door...something good must be behind(needs key from room 6), inside is the mummy's sarcoughagus (WIN)");
 
 
-      one.AddExit("east", two);
-      two.AddExit("west", one);
+      one.AddExit(Direction.east, two);
+      two.AddExit(Direction.west, one);
 
-      two.AddExit("east", three);
-      three.AddExit("west", two);
+      two.AddExit(Direction.east, three);
+      three.AddExit(Direction.west, two);
 
-      two.AddExit("south", five);
-      five.AddExit("north", two);
+      two.AddExit(Direction.south, five);
+      five.AddExit(Direction.north, two);
 
-      five.AddExit("east", four);
-      four.AddExit("west", five);
+      five.AddExit(Direction.east, four);
+      four.AddExit(Direction.west, five);
 
-      five.AddExit("south", seven);
-      seven.AddExit("north", five);
+      five.AddExit(Direction.south, seven);
+      seven.AddExit(Direction.north, five);
 
-      five.AddExit("west", six);
-      six.AddExit("east", five);
+      five.AddExit(Direction.west, six);
+      six.AddExit(Direction.east, five);
 
       CurrentRoom = one;
     }
 
+    public IRoom GetUserInput()
+    {
+      throw new System.NotImplementedException();
+    }
+
+    void IGame.GetUserInput()
+    {
+      throw new System.NotImplementedException();
+    }
 
     public Game()
     {

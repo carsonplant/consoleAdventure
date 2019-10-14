@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ConsoleAdventure.Project.Interfaces;
 
@@ -18,6 +19,28 @@ namespace ConsoleAdventure.Project.Models
     {
       Name = name;
       Inventory = inventory;
+    }
+
+    public void AddItem(Item item)
+    {
+      Inventory.Add(item);
+    }
+
+    public void ShowInventory()
+    {
+      if (Inventory.Count > 0)
+      {
+        Console.WriteLine("You currently have these items in your inventory:");
+        Inventory.ForEach(item =>
+        {
+          Console.WriteLine(item.Name);
+
+        });
+      }
+      else
+      {
+        Console.WriteLine("You don't have anything in your inventory.");
+      }
     }
 
     public Player()

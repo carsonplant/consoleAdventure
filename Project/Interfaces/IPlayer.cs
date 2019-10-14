@@ -8,6 +8,7 @@ namespace ConsoleAdventure.Project.Interfaces
     string Name { get; set; }
     List<Item> Inventory { get; set; }
 
+    IPlayer ShowInventory();
     string GetTemplate();
   }
 }

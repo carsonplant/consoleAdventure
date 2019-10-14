@@ -33,7 +33,7 @@ namespace ConsoleAdventure.Project
 
         Console.WriteLine($"{_game.CurrentRoom.Description}");
         Console.WriteLine(Environment.NewLine);
-        Console.WriteLine("Alright Investigator what's your next move?");
+        Console.WriteLine("What's next?");
         _game.GetUserInput();
 
 

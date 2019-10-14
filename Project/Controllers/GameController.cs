@@ -51,7 +51,7 @@ namespace ConsoleAdventure.Project.Controllers
           Environment.Exit(0);
           break;
         case "go":
-          _gameService.Go(input);
+          _gameService.Go(option);
           break;
         case "take":
           _gameService.TakeItem(option);

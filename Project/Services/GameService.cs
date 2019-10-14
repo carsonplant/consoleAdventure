@@ -18,6 +18,36 @@ namespace ConsoleAdventure.Project
       Messages = new List<string>();
     }
 
+    public void StartGame()
+    {
+      _game.Setup();
+      Console.Clear();
+      Console.WriteLine("Hello Investigator, I hope you've slept well we have arrived at Station Hope. I have been attempting to contact the station since we've been in hailing range.\nI've received no response and my sensors aren't picking up any signs of life. As an Investigator I know " +
+                        "You've been tasked with solving mysteries,\nbut I strongly advise waiting for the fleet to arrive before proceeding. However as the ship's computer I have to follow your orders what is your command?");
+      Console.WriteLine(Environment.NewLine);
+      Console.WriteLine("You have a choice either be a gutless Investigator who is a pathetic scaredy cat and (w)ait for the fleet that was sent out two weeks after you left to investigate," +
+                        "\nor be a awesome heroic Investigator who does his/her job even in the face of the unknown and (d)ock to the space station and investigate \n" +
+                        "What would you like to do (w)ait or (d)ock?");
+      Console.ReadLine();
+      {
+        Console.Clear();
+
+        /*Console.Clear();
+        Console.WriteLine("As you shine the light around the room you see a create at the far end of the room! It has red eyes\nand mandibles very similar to those of an ant" +
+                          "as you stare in dumb shock it hisses and starts to run at you!");
+        Console.WriteLine("");
+        Console.WriteLine("You have one chance what are you going to do?");
+        continue;*/
+
+        Console.WriteLine($"{_game.CurrentRoom.Description}");
+        Console.WriteLine(Environment.NewLine);
+        Console.WriteLine("Alright Investigator what's your next move?");
+        _game.GetUserInput();
+
+
+      }
+    }
+
     public string GetGameDetails()
     {
       return _game.CurrentRoom.Description;
@@ -76,22 +106,30 @@ namespace ConsoleAdventure.Project
 
     public void Look()
     {
-      throw new System.NotImplementedException();
+      Console.Clear();
+      Console.WriteLine($"{_game.CurrentRoom.Description}");
+      Console.WriteLine(Environment.NewLine);
+      _game.CurrentRoom.PrintRoomItems();
+      Console.WriteLine(Environment.NewLine);
+      Console.WriteLine("What is your next move Investigator?");
+      _game.GetUserInput();
     }
 
     public void Quit()
     {
-      throw new System.NotImplementedException();
+      Console.Clear();
+      Console.WriteLine("You're really gonna quit on the adventure?");
     }
     ///<summary>
     ///Restarts the game 
     ///</summary>
     public void Reset()
     {
-      throw new System.NotImplementedException();
+      Console.Clear();
+      StartGame();
     }
 
-    public void Setup(string playerName)
+    public void Setup()
     {
       throw new System.NotImplementedException();
     }

@@ -43,6 +43,7 @@ namespace ConsoleAdventure.Project.Models
       }
     }
 
+
     public Player()
     {
     }

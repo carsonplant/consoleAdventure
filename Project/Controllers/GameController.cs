@@ -25,7 +25,6 @@ namespace ConsoleAdventure.Project.Controllers
     {
       Console.Clear();
       Console.WriteLine(_gameService.GetGameDetails());
-      Console.WriteLine("Flight Log:");
       foreach (string message in _gameService.Messages)
       {
         Console.WriteLine("\t" + message);
@@ -79,50 +78,7 @@ namespace ConsoleAdventure.Project.Controllers
           break;
       }
     }
-    // {
-    //   string input = Console.ReadLine().ToLower();
-    //   string[] inputs = input.Split(' ');
-    //   string command = inputs[0];
-    //   string option = "";
-    //   if (inputs.Length > 1)
-    //   {
-    //     option = inputs[1];
-    //   }
-    //   switch (command)
-    //   {
-    //     case "go":
-    //       _gameService.Go(option);
-    //       break;
-    //     case "take":
-    //       TakeItem(option);
-    //       break;
-    //     case "use":
-    //       UseItem(option);
-    //       break;
-    //     case "inventory":
-    //       Inventory();
-    //       break;
-    //     case "look":
-    //       Look();
-    //       break;
-    //     case "help":
-    //       Help();
-    //       break;
-    //     case "quit":
-    //     case "q":
-    //       Quit();
-    //       break;
-    //     case "reset":
-    //     case "r":
-    //       Reset();
-    //       break;
-    //     default:
-    //       Console.Clear();
-    //       System.Console.WriteLine("I'm a computer and I can guess what you are typing, but how bout you try again.");
-    //       Thread.Sleep(1500);
-    //       break;
-    //   }
-    // }
+
 
     //NOTE this should print your messages for the game.
     private void Print()

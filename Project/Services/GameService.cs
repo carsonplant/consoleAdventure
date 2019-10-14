@@ -63,7 +63,7 @@ namespace ConsoleAdventure.Project
 
         default:
           Console.Clear();
-          Console.WriteLine("Please choose from you valid directions: 'Forward', 'Right', 'Left', 'Back' ");
+          Console.WriteLine("Please choose from you valid directions: 'East', 'West', 'North', 'South' ");
           Thread.Sleep(3000);
           break;
       }
@@ -124,27 +124,29 @@ namespace ConsoleAdventure.Project
     ///<summary>When taking an item be sure the item is in the current room before adding it to the player inventory, Also don't forget to remove the item from the room it was picked up in</summary>
     public void TakeItem(string itemName)
     {
-      Item item = SecureItem(itemName, _game.CurrentRoom.Items);
-      if (item != null)
-      {
-        Console.Clear();
-        _game.CurrentRoom.Items.Remove(item);
-        _game.CurrentPlayer.AddItem(item);
-        Console.WriteLine($"You picked up {itemName}");
-        Thread.Sleep(1750);
-      }
-      else
-      {
-        Console.Clear();
-        Console.WriteLine(_game.CurrentRoom.Items.Count > 0 ? $"What are you playing at {itemName} isn't there anymore" : "There isn't anything to take.");
-        Thread.Sleep(1750);
-      }
+      // Item item = SecureItem(itemName, _game.CurrentRoom.Items);
+      // if (item != null)
+      // {
+      //   Console.Clear();
+      //   _game.CurrentRoom.Items.Remove(item);
+      //   _game.CurrentPlayer.AddItem(item);
+      //   Console.WriteLine($"You picked up {itemName}");
+      //   Thread.Sleep(1750);
+      // }
+      // else
+      // {
+      //   Console.Clear();
+      //   Console.WriteLine(_game.CurrentRoom.Items.Count > 0 ? $"What are you playing at {itemName} isn't there anymore" : "There isn't anything to take.");
+      //   Thread.Sleep(1750);
+      // }
     }
 
-    private Item SecureItem(string input, List<Item> items)
-    {
-      return items.Find(i => { return i.Name.ToLower() == input; });
-    }
+    // private Item SecureItem(string input, List<Item> items)
+    // {
+    //   return items.Find(i => { return i.Name.ToLower() == input; });
+    // }
+
+
     ///<summary>
     ///No need to Pass a room since Items can only be used in the CurrentRoom
     ///Make sure you validate the item is in the room or player inventory before

@@ -14,9 +14,9 @@ namespace ConsoleAdventure.Project.Controllers
     //NOTE Makes sure everything is called to finish Setup and Starts the Game loop
     public void Run()
     {
-      _gameService.Messages.Add("Welcome to the labyrinth...");
-      _gameService.Messages.Add(Environment.NewLine);
-      _gameService.Messages.Add("Continue your exploration in search of the mummy's tomb");
+      Console.WriteLine("Welcome to the labyrinth...");
+      Console.WriteLine(Environment.NewLine);
+      Console.WriteLine("Continue your exploration in search of the mummy's tomb");
       while (true)
       {
         Update();
@@ -27,10 +27,10 @@ namespace ConsoleAdventure.Project.Controllers
     private void Update()
     {
       Console.Clear();
-      _gameService.Messages.Add(_gameService.GetGameDetails());
+      Console.WriteLine(_gameService.GetGameDetails());
       foreach (string message in _gameService.Messages)
       {
-        _gameService.Messages.Add("\t" + message);
+        Console.WriteLine("\t" + message);
       }
       _gameService.Messages.Clear();
     }
@@ -39,7 +39,7 @@ namespace ConsoleAdventure.Project.Controllers
     //NOTE Gets the user input, calls the appropriate command, and passes on the option if needed.
     public void GetUserInput()
     {
-      _gameService.Messages.Add("What would you like to do?");
+      Console.WriteLine("What would you like to do?");
       string input = Console.ReadLine().ToLower() + " ";
       string command = input.Substring(0, input.IndexOf(" "));
       string option = input.Substring(input.IndexOf(" ") + 1).Trim();
@@ -77,7 +77,7 @@ namespace ConsoleAdventure.Project.Controllers
           break;
         default:
           Console.Clear();
-          _gameService.Messages.Add("I don't know what you mean, try again.");
+          System.Console.WriteLine("I don't know what you mean, try again.");
           break;
       }
     }

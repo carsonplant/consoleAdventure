@@ -27,9 +27,9 @@ namespace ConsoleAdventure.Project
 
 
 
-        Console.WriteLine($"{_game.CurrentRoom.Description}");
-        Console.WriteLine(Environment.NewLine);
-        Console.WriteLine("What's next?");
+        Messages.Add($"{_game.CurrentRoom.Description}");
+        Messages.Add(Environment.NewLine);
+        Messages.Add("What's next?");
 
 
       }
@@ -58,7 +58,7 @@ namespace ConsoleAdventure.Project
 
         default:
           Console.Clear();
-          Console.WriteLine("Please choose from you valid directions: 'East', 'West', 'North', 'South' ");
+          Messages.Add("Please choose from you valid directions: 'East', 'West', 'North', 'South' ");
           Thread.Sleep(3000);
           break;
       }
@@ -79,26 +79,26 @@ namespace ConsoleAdventure.Project
     public void Inventory()
     {
       Console.Clear();
-      Console.WriteLine($"{_game.CurrentRoom.Description}");
-      Console.WriteLine(Environment.NewLine);
+      Messages.Add($"{_game.CurrentRoom.Description}");
+      Messages.Add(Environment.NewLine);
       _game.CurrentPlayer.ShowInventory();
-      Console.WriteLine(Environment.NewLine);
+      Messages.Add(Environment.NewLine);
     }
 
     public void Look()
     {
       Console.Clear();
-      Console.WriteLine($"{_game.CurrentRoom.Description}");
-      Console.WriteLine(Environment.NewLine);
+      Messages.Add($"{_game.CurrentRoom.Description}");
+      Messages.Add(Environment.NewLine);
       _game.CurrentRoom.PrintRoomItems();
-      Console.WriteLine(Environment.NewLine);
-      Console.WriteLine("What is your next move Investigator?");
+      Messages.Add(Environment.NewLine);
+      Messages.Add("What is your next move Investigator?");
     }
 
     public void Quit()
     {
       Console.Clear();
-      Console.WriteLine("You're really gonna quit on the adventure?");
+      Messages.Add("You're really gonna quit on the adventure?");
     }
     ///<summary>
     ///Restarts the game 

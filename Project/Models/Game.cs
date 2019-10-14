@@ -11,7 +11,7 @@ namespace ConsoleAdventure.Project.Models
     public void Setup()
     {
       Room one = new Room("one", "Entrance to the tomb, one door to the East");
-      Room two = new Room("two", "First room inside, one door to the South, one door to the East, the tomb seems naturally well lit but there's a torch, n may be useful later.");
+      Room two = new Room("two", "First room inside, one door to the South, one door to the East, the tomb seems naturally well lit but there's a torch, \n may be useful later.");
       Room three = new Room("three", "It appears to be a dead end, but there seems to be a fragile looking artifact hanging off the back wall; one door \n to the West back to room 2");
       Room four = new Room("four", "Another dead end, this room may be filled with snakes.; one door to the West back to room 5");
       Room five = new Room("five", "Interesting, four doors; one to the North, South, East, and West...decisions decisions");

@@ -25,8 +25,6 @@ namespace ConsoleAdventure.Project
       {
         Console.Clear();
 
-
-
         Messages.Add($"{_game.CurrentRoom.Description}");
         Messages.Add(Environment.NewLine);
         Messages.Add("What's next?");
@@ -79,7 +77,7 @@ namespace ConsoleAdventure.Project
     public void Inventory()
     {
       Console.Clear();
-      Messages.Add($"{_game.CurrentRoom.Description}");
+      // Messages.Add($"{_game.CurrentRoom.Description}");
       Messages.Add(Environment.NewLine);
       _game.CurrentPlayer.ShowInventory();
       Messages.Add(Environment.NewLine);
@@ -92,7 +90,7 @@ namespace ConsoleAdventure.Project
       Messages.Add(Environment.NewLine);
       _game.CurrentRoom.PrintRoomItems();
       Messages.Add(Environment.NewLine);
-      Messages.Add("What is your next move Investigator?");
+      Messages.Add("What's the next move?");
     }
 
     public void Quit()

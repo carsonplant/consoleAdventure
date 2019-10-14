@@ -26,6 +26,8 @@ namespace ConsoleAdventure.Project
       Console.WriteLine(Environment.NewLine);
       Console.WriteLine("Continue your exploration in search of the mummy's tomb");
       Console.ReadLine();
+      Thread.Sleep(3000);
+
       {
         Console.Clear();
 

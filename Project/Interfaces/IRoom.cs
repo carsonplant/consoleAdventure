@@ -12,6 +12,7 @@ namespace ConsoleAdventure.Project.Interfaces
     List<IItem> Items { get; set; }
     Dictionary<Direction, IRoom> Exits { get; }
 
+
     IRoom Go(Direction direction);
 
     public void PrintRoomItems()

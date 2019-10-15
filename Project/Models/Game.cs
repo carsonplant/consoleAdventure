@@ -18,7 +18,7 @@ namespace ConsoleAdventure.Project.Models
       Room six = new Room("six", "Another room filled with artifacts...use look to see if there's anything valuable, \n one door to the East back to room 5\n");
       Room seven = new Room("seven", "You've found it...CONGRATULATIONS YOU WIN \n \n choose to quit or reset to try and find a new path to the mummy's tomb.\n");
 
-      Item doorKey = new Item("doorKey", "Hmm...looks like a key to a door...wonder what it's doing here?", "south", seven, five);
+      IItem doorKey = new Item("doorKey", "Hmm...looks like a key to a door...wonder what it's doing here?", "south", seven, five);
 
       one.AddExit(Direction.east, two);
       two.AddExit(Direction.west, one);
@@ -45,7 +45,6 @@ namespace ConsoleAdventure.Project.Models
 
     public Game()
     {
-      CurrentPlayer = new Player();
       Setup();
     }
   }

@@ -14,7 +14,7 @@ namespace ConsoleAdventure.Project.Models
 
     private Dictionary<IItem, KeyValuePair<Direction, IRoom>> lockedRooms { get; set; }
 
-    public void AddItem(Item item)
+    public void AddItem(IItem item)
     {
       Items.Add(item);
     }

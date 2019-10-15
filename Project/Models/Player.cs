@@ -21,11 +21,6 @@ namespace ConsoleAdventure.Project.Models
       Inventory = new List<IItem>();
     }
 
-    public void AddItem(Item item)
-    {
-      Inventory.Add(item);
-    }
-
     public void ShowInventory()
     {
       if (Inventory.Count > 0)

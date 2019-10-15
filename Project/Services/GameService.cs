@@ -22,15 +22,6 @@ namespace ConsoleAdventure.Project
     {
       _game.Setup();
 
-      {
-        Console.Clear();
-
-        Messages.Add($"{_game.CurrentRoom.Description}");
-        Messages.Add(Environment.NewLine);
-        Messages.Add("What's next?");
-
-
-      }
     }
 
     public string GetGameDetails()
@@ -85,12 +76,7 @@ namespace ConsoleAdventure.Project
 
     public void Look()
     {
-      Console.Clear();
-      Messages.Add($"{_game.CurrentRoom.Description}");
-      Messages.Add(Environment.NewLine);
-      _game.CurrentRoom.PrintRoomItems();
-      Messages.Add(Environment.NewLine);
-      Messages.Add("What's the next move?");
+      Messages.Add(_game.CurrentRoom.GetTemplate());
     }
 
     public void Quit()
@@ -112,19 +98,37 @@ namespace ConsoleAdventure.Project
       throw new System.NotImplementedException();
     }
     ///<summary>When taking an item be sure the item is in the current room before adding it to the player inventory, Also don't forget to remove the item from the room it was picked up in</summary>
+    // public void TakeItem(string itemName)
+    // {
+    //   IItem item = _game.CurrentRoom.Items.Find(i => { return i.Name.ToLower() == itemName; });
+    //   if (item != null)
+    //   {
+    //     _game.CurrentPlayer.Inventory.Add(item);
+    //     _game.CurrentRoom.Items.Remove(item);
+    //     Messages.Add($"You picked up {itemName}");
+    //     return;
+    //   }
+    //   else
+    //   {
+    //     Messages.Add(_game.CurrentRoom.Items.Count > 0 ? $"What are you playing at {itemName} isn't there anymore" : "There isn't anything to take.");
+    //   }
+    // }
+
     public void TakeItem(string itemName)
     {
-      IItem item = _game.CurrentRoom.Items.Find(i => { return i.Name.ToLower() == itemName; });
-      if (item != null)
+      for (int i = 0; i < _game.CurrentRoom.Items.Count; i++)
       {
-        _game.CurrentRoom.Items.Remove(item);
-        _game.CurrentPlayer.Inventory.Add(item);
-        Messages.Add($"You picked up {itemName}");
+        IItem item = _game.CurrentRoom.Items[i];
+
+        if (item.Name.ToLower() == itemName)
+        {
+          _game.CurrentPlayer.Inventory.Add(item);
+          Messages.Add("Item successfully obtained");
+          _game.CurrentRoom.Items.Remove(item);
+          return;
+        }
       }
-      else
-      {
-        Messages.Add(_game.CurrentRoom.Items.Count > 0 ? $"What are you playing at {itemName} isn't there anymore" : "There isn't anything to take.");
-      }
+      Messages.Add("Invalid Action");
     }
 
     // private Item SecureItem(string input, List<Item> items)

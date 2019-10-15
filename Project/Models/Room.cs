@@ -38,30 +38,22 @@ namespace ConsoleAdventure.Project.Models
       return this;
     }
 
+
     public string GetTemplate()
     {
-      string template = $"Room: {Name} \nExits:\n";
+      string template = $"\nThe room contains:";
+
+      foreach (Item item in Items)
+      {
+        template += $" \n{item.Name}: {item.Description}";
+      }
+
+      template += "\n\nExits:  \n";
       foreach (var exit in Exits)
       {
-        template += "\t" + exit.Key + " - " + exit.Value.Name + Environment.NewLine;
+        template += " " + exit.Key;
       }
       return template;
-    }
-
-    public void PrintRoomItems()
-    {
-      if (Items.Count > 0)
-      {
-        Console.WriteLine("You notice this in the room:");
-        Items.ForEach(item =>
-        {
-          Console.WriteLine($"{item.Name}: {item.Description}");
-        });
-      }
-      else
-      {
-        Console.WriteLine("There is nothing else in this room.");
-      }
     }
     //FIXME  Finish writing this out
     public void Use(IItem item)

@@ -147,35 +147,35 @@ namespace ConsoleAdventure.Project
     //FIXME Finish writing this one
     public void UseItem(string itemName)
     {
-      //find item from player inventory (see find in takeItem)
-      //if they have an item by that name
-      // _game.CurrentRoom.Use(item)
-      bool validLocation = false;
-      //Check if key is in inventory
-      _game.CurrentPlayer.Inventory.ForEach(item =>
-      {
-        int i = _game.CurrentPlayer.Inventory.IndexOf(item);
-        IRoom room = _game.CurrentRoom;
-        if (room.Exits.ContainsValue(item.TargetRoom))
-        {
-          Messages.Add("You already unlocked that.");
-          validLocation = true;
-          return;
-        }
-        else if (item.Name == itemName && room == item.ValidRoom)
-        {
-          IRoom targetRoom = item.TargetRoom;
-          room.Exits.Add(Direction.south, item.TargetRoom);
-          room.lockedRooms.Remove(item.TargetDirection);
-          Messages.Add("Unlocked exit!");
-          validLocation = true;
-          return;
-        }
-      });
-      if (!validLocation)
-      {
-        Messages.Add("No applicable key.");
-      }
+      //   //find item from player inventory (see find in takeItem)
+      //   //if they have an item by that name
+      //   // _game.CurrentRoom.Use(item)
+      //   bool validLocation = false;
+      //   //Check if key is in inventory
+      //   _game.CurrentPlayer.Inventory.ForEach(item =>
+      //   {
+      //     int i = _game.CurrentPlayer.Inventory.IndexOf(item);
+      //     IRoom room = _game.CurrentRoom;
+      //     if (room.Exits.ContainsValue(item.TargetRoom))
+      //     {
+      //       Messages.Add("You already unlocked that.");
+      //       validLocation = true;
+      //       return;
+      //     }
+      //     else if (item.Name == itemName && room == item.ValidRoom)
+      //     {
+      //       IRoom targetRoom = item.TargetRoom;
+      //       room.Exits.Add(Direction.south, item.TargetRoom);
+      //       room.lockedRooms.Remove(item.TargetDirection);
+      //       Messages.Add("Unlocked exit!");
+      //       validLocation = true;
+      //       return;
+      //     }
+      //   });
+      //   if (!validLocation)
+      //   {
+      //     Messages.Add("No applicable key.");
+      //   }
     }
   }
 }

@@ -21,6 +21,7 @@ namespace ConsoleAdventure.Project.Models
       Inventory = new List<IItem>();
     }
 
+
     public void ShowInventory()
     {
       if (Inventory.Count > 0)

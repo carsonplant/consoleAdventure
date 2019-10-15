@@ -116,13 +116,15 @@ namespace ConsoleAdventure.Project
 
     public void TakeItem(string itemName)
     {
+      IItem target;
       for (int i = 0; i < _game.CurrentRoom.Items.Count; i++)
       {
         IItem item = _game.CurrentRoom.Items[i];
 
         if (item.Name.ToLower() == itemName)
         {
-          _game.CurrentPlayer.Inventory.Add(item);
+          target = item;
+          _game.CurrentPlayer.Inventory.Add(target);
           Messages.Add("Item successfully obtained");
           _game.CurrentRoom.Items.Remove(item);
           return;
